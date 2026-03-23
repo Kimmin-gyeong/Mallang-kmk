@@ -21,6 +21,6 @@ public class MessageController {
     public ResponseEntity<MessageSendResponseDto> sendMessage(@RequestBody MessageSendRequestDto requestDto) {
         MessageSendResponseDto responseDto = service.sendMessage(requestDto);
         return ResponseEntity.ok(responseDto);
-    }
+    }//
 
 }
