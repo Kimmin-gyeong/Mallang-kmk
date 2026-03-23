@@ -16,7 +16,7 @@ public class MessageController {
 
     private final MessageService service;
 
-    //1. 메시지 전송
+    //1. 메시지 전송.
     @PostMapping ("/send")//@RequestBody 사용자가 보낸 json데이터를 자바 객체로 자동 변환해주는 어노테이션
     public ResponseEntity<MessageSendResponseDto> sendMessage(@RequestBody MessageSendRequestDto requestDto) {
         MessageSendResponseDto responseDto = service.sendMessage(requestDto);
