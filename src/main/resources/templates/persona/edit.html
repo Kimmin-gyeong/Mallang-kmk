@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>페르소나 수정</title>
+</head>
+<body>
+
+<div class="container">
+    <h3>페르소나 수정</h3>
+
+    <div class="form-group">
+        <label for="personaName">페르소나 이름</label>
+        <input type="text" id="personaName" class="form-control" th:value="${persona.personaName}">
+    </div>
+
+    <!-- 사용자가 볼 필요 없는 AI 프롬프트 hidden input -->
+    <input type="hidden" id="systemPrompt" th:value="${persona.systemPrompt}" />
+
+    <div>
+        <button type="button" id="updateBtn">수정 완료</button>
+    </div>
+</div>
+
+<script>
+    document.getElementById('updateBtn').addEventListener('click', () => {
+        const id = /*[[${persona.personaId}]]*/ 1;
+        const data = {
+            personaName: document.getElementById('personaName').value,
+            systemPrompt: document.getElementById('systemPrompt').value // hidden input 값 가져오기
+        };
+
+        fetch(`/api/personas/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        })
+            .then(res => {
+                if(res.ok){
+                    alert('수정 완료');
+                    window.location.href = '/personas';
+                } else {
+                    alert('수정 실패');
+                }
+            });
+    });
+</script>
+
+</body>
+</html>

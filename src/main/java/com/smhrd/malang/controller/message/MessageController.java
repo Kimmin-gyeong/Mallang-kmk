@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin //외부요청 받는 거
 @RestController
-@RequestMapping("/messages") //url 주소 지음
+@RequestMapping("/api/messages") //url 주소 지음
 @RequiredArgsConstructor //final 붙은 필드들을 자동으로 생성자 만들어주는 기능
 public class MessageController {
 

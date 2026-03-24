@@ -1,7 +1,6 @@
 package com.smhrd.malang.dto.message;
 
-import com.smhrd.malang.entity.Message;
-import jakarta.persistence.Entity;
+import com.smhrd.malang.domain.Message;
 import lombok.Getter;
 
 @Getter

@@ -1,6 +1,6 @@
 package com.smhrd.malang.repository;
 
-import com.smhrd.malang.entity.Message;
+import com.smhrd.malang.domain.Message;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MessageRepository extends JpaRepository<Message, Long> {

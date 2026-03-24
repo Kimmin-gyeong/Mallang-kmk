@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>페르소나 생성</title>
+</head>
+<body>
+
+<div class="container">
+  <h3>페르소나 생성</h3>
+
+  <div class="form-group">
+    <label for="personaName">페르소나 이름</label>
+    <input type="text" id="personaName" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label for="systemPrompt">시스템 프롬프트</label>
+    <input type="text" id="systemPrompt" class="form-control">
+  </div>
+
+  <div>
+    <button type="button" id="createBtn">생성</button>
+  </div>
+</div>
+
+<script>
+  document.getElementById('createBtn').addEventListener('click', () => {
+    const data = {
+      userId: 1, // 테스트용, 실제로는 로그인한 유저 아이디
+      personaName: document.getElementById('personaName').value,
+      systemPrompt: document.getElementById('systemPrompt').value
+    };
+
+    fetch('/api/personas', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+            .then(res => res.json())
+            .then(resData => {
+              alert(`생성 완료: ${resData.personaName}`);
+              window.location.href = '/personas';
+            });
+  });
+</script>
+
+</body>
+</html>

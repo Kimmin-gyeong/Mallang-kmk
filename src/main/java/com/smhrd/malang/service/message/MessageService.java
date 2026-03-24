@@ -2,12 +2,10 @@ package com.smhrd.malang.service.message;
 
 import com.smhrd.malang.dto.message.MessageSendRequestDto;
 import com.smhrd.malang.dto.message.MessageSendResponseDto;
-import com.smhrd.malang.entity.Message;
+import com.smhrd.malang.domain.Message;
 import com.smhrd.malang.repository.MessageRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @RequiredArgsConstructor
 @Service
