@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>페르소나 목록</title>
+</head>
+<body>
+
+<div class="container">
+  <h3>페르소나 목록</h3>
+
+  <div th:each="persona : ${personas}" class="persona-item">
+    <div>Id: <span th:text="${persona.personaId}"></span></div>
+    <div>이름: <span th:text="${persona.personaName}"></span></div>
+    <div>
+      <a th:href="@{'/personas/edit/' + ${persona.personaId}}">수정</a>
+      <button type="button" th:attr="data-id=${persona.personaId}" onclick="deletePersona(this)">삭제</button>
+    </div>
+    <hr/>
+  </div>
+
+  <div>
+    <a href="/personas/create">새 페르소나 생성</a>
+  </div>
+</div>
+
+<script>
+  function deletePersona(btn){
+    const id = btn.getAttribute('data-id');
+    fetch(`/api/personas/${id}`, { method: 'DELETE' })
+            .then(res => {
+              if(res.ok) location.reload();
+              else alert('삭제 실패');
+            });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>메시지 전송 테스트</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <article>
+                <!-- 사용자 입력 -->
+                <label for="finalMsg">원본 메시지</label>
+                <input type="text" class="form-control" id="finalMsg">
+
+                <!-- DB에서 받아오는 값 (hidden) -->
+                <input type="hidden" id="roomId" th:value="1" />
+                <input type="hidden" id="senderId" th:value="1" />
+                <input type="hidden" id="personaId" th:value="1" />
+
+                <button type="button" id="createBtn" class="btn btn-primary btn-sm mt-2">전송</button>
+            </article>
+        </div>
+    </div>
+</div>
+
+<script src="/js/message/article.js"></script>
+</body>
+</html>
+
+<!-- 서버 처리 후 결과 표시 -->
+<!--                <div id="resultSection" class="mt-4">-->
+<!--                    <label for="correctedMsg">교정 메시지</label>-->
+<!--                    <input type="text" class="form-control" id="correctedMsg" readonly>-->
+
+<!--                    <label for="finalMsg">최종 메시지</label>-->
+<!--                    <input type="text" class="form-control" id="finalMsg" readonly>-->
+
+<!--                    <label for="explanation">설명</label>-->
+<!--                    <input type="text" class="form-control" id="explanation" readonly>-->
+<!--                </div>-->
+
+<!-- 전송 버튼 -->
