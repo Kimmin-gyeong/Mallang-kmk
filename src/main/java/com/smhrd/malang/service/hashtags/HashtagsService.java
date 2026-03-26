@@ -1,5 +1,6 @@
 package com.smhrd.malang.service.hashtags;
 
+import com.smhrd.malang.dto.personaTags.PersonaTagRequestDto;
 import com.smhrd.malang.entity.Hashtags;
 import com.smhrd.malang.entity.Persona_tags;
 import com.smhrd.malang.entity.Personas;
@@ -40,7 +41,25 @@ public class HashtagsService {
 
     // 해시태그 조합 저장
     @Transactional // 저장하다가 에러나면 취소해주는 라이브러리
-    public void savePersonaTags(){
+    public void savePersonaTags(PersonaTagRequestDto dto){
+
+        // Personas 생성
+        Personas personas = new Personas();
+        personas.setUserId(1); // not null이라 임의로 넣음
+        personasRepository.save(personas);
+
+        // 선택한 해시태그들 페르소나에 연결
+        for (Integer id : dto.getHashtagIds()){
+
+            Hashtags hashtag = hashtagsRepository.findById(id)
+                    .orElseThrow(() -> new IllegalArgumentException("해시태그 없음"));
+
+            Persona_tags pt = new Persona_tags();
+            pt.setPersonas(personas);
+            pt.setHashtags(hashtag);
+
+            personaTagsRepository.save(pt);
+        }
 
         }
     }

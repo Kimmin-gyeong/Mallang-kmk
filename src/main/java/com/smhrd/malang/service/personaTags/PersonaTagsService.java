@@ -21,7 +21,9 @@ public class PersonaTagsService {
 
     // 조회한 페르소나 조회
     public List<Persona_tags> findByPersonasPersonaId(Integer personaId){
-        return repository.findByPersonasPersonaId(personaId);
+        Personas personas = personasRepository.findById(personaId)
+                .orElseThrow(() -> new IllegalArgumentException("페르소나 없음: " + personaId));
+        return repository.findByPersonas(personas);
     }
 
     // 모든 페르소나 조회
