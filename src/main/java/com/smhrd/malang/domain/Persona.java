@@ -14,15 +14,15 @@ import java.time.LocalDateTime;
 public class Persona {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="persona_id")
+    @Column(name = "persona_id")
     private Integer personaId;
 
-    @Column(name="user_id", nullable = false)
+    @Column(name = "user_id", nullable = false)
     private Integer userId;
-    @Column(name="persona_name", nullable = false, length = 100)
+    @Column(name = "persona_name", nullable = false, length = 100)
     private String personaName;
-    @Column(name="system_prompt", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "system_prompt", nullable = false, columnDefinition = "TEXT")
     private String systemPrompt;
-    @Column(name="created_at")
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
 }

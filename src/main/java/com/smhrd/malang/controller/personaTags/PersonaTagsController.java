@@ -1,10 +1,8 @@
 package com.smhrd.malang.controller.personaTags;
 
+import com.smhrd.malang.domain.*;
 import com.smhrd.malang.dto.personaTags.PersonaWithTags;
 import com.smhrd.malang.dto.personaTags.PersonaTagRequestDto;
-import com.smhrd.malang.entity.Hashtags;
-import com.smhrd.malang.entity.Persona_tags;
-import com.smhrd.malang.entity.Personas;
 import com.smhrd.malang.repository.HashtagsRepository;
 import com.smhrd.malang.repository.PersonaTagsRepository;
 import com.smhrd.malang.repository.PersonasRepository;
@@ -45,7 +43,7 @@ public class PersonaTagsController {
             return "redirect:/persona_tags/register";
         }
 
-        Personas persona = new Personas();
+        Persona persona = new Persona();
         persona.setUserId(1);
         persona.setPersonaName(dto.getPersonaName());
         persona.setSystemPrompt("기본 system prompt");
@@ -67,7 +65,7 @@ public class PersonaTagsController {
     @GetMapping("/persona_tags/view")
     public String viewPersonaTags(Model model){
         // 유저 1번의 페르소나 조회
-        List<Personas> personasList = personasRepository.findByUserId(1);
+        List<Persona> personasList = personasRepository.findByUserId(1);
 
         // 페르소나별 태그 매핑 로직
         List<PersonaWithTags> personaWithTagsList = personasList.stream().map(persona -> {

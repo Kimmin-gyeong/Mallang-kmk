@@ -47,5 +47,5 @@ public class Message {
     @CreatedDate
     @Column(name="created_at", updatable = false)
     private LocalDateTime createdAt; //메시지를 보낸 시간(자동)
+    }
 
-}

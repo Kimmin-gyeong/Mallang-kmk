@@ -1,10 +1,11 @@
 package com.smhrd.malang.repository;
 
-import com.smhrd.malang.entity.Personas;
+import com.smhrd.malang.domain.ChatMessage;
+import com.smhrd.malang.domain.Persona;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface PersonasRepository extends JpaRepository<Personas, Integer> {
-    List<Personas> findByUserId(Integer userId);
+public interface PersonasRepository extends JpaRepository<Persona, Integer> {
+    List<Persona> findByUserId(Integer userId);
 }

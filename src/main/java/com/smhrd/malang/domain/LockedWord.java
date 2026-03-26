@@ -2,6 +2,7 @@ package com.smhrd.malang.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -34,4 +35,5 @@ public class LockedWord {
     public void prePersist() {
         this.createdAt = LocalDateTime.now();
     }
+
 }

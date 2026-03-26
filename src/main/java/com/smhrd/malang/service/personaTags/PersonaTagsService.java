@@ -1,7 +1,8 @@
 package com.smhrd.malang.service.personaTags;
 
-import com.smhrd.malang.entity.Persona_tags;
-import com.smhrd.malang.entity.Personas;
+import com.smhrd.malang.domain.ChatMessage;
+import com.smhrd.malang.domain.Persona;
+import com.smhrd.malang.domain.Persona_tags;
 import com.smhrd.malang.repository.PersonaTagsRepository;
 import com.smhrd.malang.repository.PersonasRepository;
 import org.springframework.stereotype.Service;
@@ -21,13 +22,13 @@ public class PersonaTagsService {
 
     // 조회한 페르소나 조회
     public List<Persona_tags> findByPersonasPersonaId(Integer personaId){
-        Personas personas = personasRepository.findById(personaId)
+        Persona persona = personasRepository.findById(personaId)
                 .orElseThrow(() -> new IllegalArgumentException("페르소나 없음: " + personaId));
-        return repository.findByPersonas(personas);
+        return repository.findByPersonas(persona);
     }
 
     // 모든 페르소나 조회
-    public List<Personas> findAllPersonas(){
+    public List<Persona> findAllPersonas(){
         return personasRepository.findAll();
     }
 

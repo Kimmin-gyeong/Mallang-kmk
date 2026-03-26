@@ -1,4 +1,4 @@
-package com.smhrd.malang.entity;
+package com.smhrd.malang.domain;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -20,9 +20,9 @@ public class Persona_tags {
 
     @ManyToOne
     @JoinColumn(name = "persona_id") // personas의 persona_id 참조
-    private Personas personas;
+    private Persona personas;
 
     @ManyToOne
     @JoinColumn(name = "hashtag_id") // hashtags의 hashtag_id 참조
-    private Hashtags hashtags;
+    private com.smhrd.malang.domain.Hashtags hashtags;
 }

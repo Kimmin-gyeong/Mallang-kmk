@@ -1,6 +1,6 @@
 package com.smhrd.malang.controller.hashtags;
 
-import com.smhrd.malang.entity.Hashtags;
+import com.smhrd.malang.domain.Hashtags;
 import com.smhrd.malang.repository.HashtagsRepository;
 import com.smhrd.malang.repository.PersonaTagsRepository;
 import com.smhrd.malang.repository.PersonasRepository;

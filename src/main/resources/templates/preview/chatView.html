@@ -15,7 +15,12 @@
 <hr>
 
 <div th:if="${result}">
-    <p><strong>보정 요청 메세지:</strong> <span th:text="${result.originalMsg}"></span></p>
+    <h3>보정 결과</h3>
+    <p><strong>원문 메세지:</strong> <span th:text="${result.originalMsg}"></span></p>
+    <p><strong>보정 요청 메세지:</strong> <span th:text="${result.finalMsgMsg}"></span></p>
+    <p th:if="${result.explanation}">
+        <strong>보정 이유:</strong> <span th:text="${result.explanation}"></span>
+    </p>
 </div>
 </body>
 </html>

@@ -1,4 +1,4 @@
-package com.smhrd.malang.entity;
+package com.smhrd.malang.domain;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
