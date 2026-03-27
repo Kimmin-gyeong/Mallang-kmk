@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/stompjs/lib/stomp.min.js"></script>
+</head>
+<body>
+
+<h2>채팅 프로그램</h2>
+//
+이름:
+<input id="name" />
+
+메시지:
+<input id="message" />
+
+<button onclick="send()">전송</button>
+
+<ul id="chat"></ul>
+
+<script>
+
+  let stompClient = null; // STOMP 클라이언트
+
+  // 서버 연결
+  function connect(){
+
+    let socket = new SockJS("/chat"); // 특정 소켓 서버와 연결해주는 객체
+
+    stompClient = Stomp.over(socket);
+
+    stompClient.connect({}, function(frame){ // frame : 메시지 규격 (Command, Headers, Body)
+      // 채팅 채널 구독
+      stompClient.subscribe("/topic/messages", function(message){
+        // 받은 메시지 화면 출력
+        // showMessage(message);
+        console.log(message)
+        showMessage(JSON.parse(message.body)); // BODY에 들어 있는 JSON 문자열을 JSON Object로 파싱
+      });
+    });
+  }
+  // 메시지 전송
+  function send(){
+    let name = document.getElementById("name").value;
+    let message = document.getElementById("message").value;
+
+    stompClient.send("/app/sendMessage", {}, JSON.stringify({sender : name, message : message}));
+  }
+
+  // 서버로부터 채팅 메시지를 받으면 화면에 출력
+  function showMessage(message){
+    let chat = document.getElementById("chat");
+
+    let li = document.createElement("li"); //새로운 li 태그 생성
+    li.innerText = message.sender + " : " + message.message;
+
+    chat.appendChild(li);
+  }
+
+  connect(); // chat.html이 로드되면 바로 연결해줌
+</script>
+// 바꿔당1234
+</body>
+</html>
